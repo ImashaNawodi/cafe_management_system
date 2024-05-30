@@ -1,8 +1,9 @@
-// checkRole.js
-function checkRole(req, res, next) {
-    if (res.locals.role == process.env.USER) 
-      res.sendStatus(401);
-    else
-      next();
-  }
-  module.exports = { checkRole };
+// services/checkRole.js
+
+module.exports.checkRole = (req, res, next) => {
+    if (req.user && req.user.role === 'admin') {
+        next();
+    } else {
+        return res.status(403).json({ message: "Unauthorized" });
+    }
+};
