@@ -18,3 +18,28 @@ create table category(
     name varchar(255) NOT NULL,
     primary key(id)
 )
+
+
+
+create table product(
+    id int not null AUTO_INCREMENT,
+    name varchar(255) not NULL,
+    categoryId int NOT NULL,
+    description varchar(255),
+    price int,
+    status varchar(20),
+    primary key(id)
+)
+
+create table bill(
+    id int not null AUTO_INCREMENT,
+    uuid varchar(200) NOT NULL,
+    name varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    contactNumber varchar(20) not null,
+    paymentMethod varchar(50) NOT NULL,
+    total int not null,
+    productdetails JSON default null,
+    createdBy varchar(255) NOT NULL,
+    primary key(id)
+);

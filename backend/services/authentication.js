@@ -1,18 +1,16 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
-const authenticateToken = (req, res, next) => {
-  const token = req.header('Authorization') && req.header('Authorization').split(' ')[1];
-  if (!token) {
-    return res.status(401).json({ message: "Access token is missing or invalid" });
-  }
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (token == null) return res.sendStatus(401);
 
-  jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
-    if (err) {
-      return res.status(403).json({ message: "Invalid token" });
-    }
-    res.locals.email = user.email;
-    next();
-  });
-};
+    jwt.verify(token, process.env.ACCESS_TOKEN, (err, response) => {
+        if (err) return res.sendStatus(403);
+        res.locals = response;
+        next();
+    });
+}
 
 module.exports = { authenticateToken };

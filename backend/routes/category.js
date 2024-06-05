@@ -41,5 +41,4 @@ router.patch('/update', auth.authenticateToken, checkRole.checkRole, (req, res) 
         }
     });
 });
-
 module.exports = router;
