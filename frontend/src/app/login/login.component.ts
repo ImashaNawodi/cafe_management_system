@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from '../services/snackbar.service';
 import { GlobalConstant } from '../shared/global-constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,12 @@ export class LoginComponent implements OnInit {
 
   loginForm :any =FormGroup;
   responseMessage :any;
-  router: any;
     constructor(private formBuilder:FormBuilder,
       private userService:UserService,
       private dialogRef :MatDialogRef<LoginComponent>,
-      private snackbarService:SnackbarService
+      private snackbarService:SnackbarService,
+      private router :Router
+    
     ) { }
   
     ngOnInit(): void {
