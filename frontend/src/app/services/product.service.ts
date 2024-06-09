@@ -40,4 +40,14 @@ export class ProductService {
     })
   }
 
+  getProductsByCategory(id:any){
+    return this.httpClinet.get(this.url+"/product/getByCategory/"+id);
+    
+  }
+  getById(id:any){
+    return this.httpClinet.get(this.url+"/product/getById/"+id);
+
+
+  }
+
 }

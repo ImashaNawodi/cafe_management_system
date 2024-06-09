@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstant } from 'src/app/shared/global-constants';
-import { CategoryComponent } from '../dialog/category/category.component';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
 import { ProductComponent } from '../dialog/product/product.component';
 
