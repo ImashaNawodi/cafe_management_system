@@ -14,12 +14,22 @@ const MENUITEMS: Menu[] = [
     name: "dashboard",
     icon: "dashboard",
     role: ""
+  },
+  {
+    state: "category",
+    name: "Manage Category",
+    icon: "category",
+    role: "admin"
+  },
+  {
+    state: "product",
+    name: "Manage Product",
+    icon: "inventory_2",
+    role: "admin"
   }
 ];
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MenuItem {
   getMenuItem(): Menu[] {
     return MENUITEMS;
