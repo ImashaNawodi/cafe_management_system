@@ -7,7 +7,7 @@ create table user(
     status varchar(20),
     role varchar(20),
     UNIQUE (email)
-)
+);
 
 INSERT INTO user (name, contactNumber, email, password, status, role)
 VALUES ('Admin', '1234567890', 'admin@gmail.com', 'admin', 'true', 'admin');
@@ -29,7 +29,7 @@ create table product(
     price int,
     status varchar(20),
     primary key(id)
-)
+);
 
 create table bill(
     id int not null AUTO_INCREMENT,
@@ -38,8 +38,8 @@ create table bill(
     email varchar(255) NOT NULL,
     contactNumber varchar(20) not null,
     paymentMethod varchar(50) NOT NULL,
-    total int not null,
-    productdetails JSON default null,
+    total int NOT NULL,
+    productDetails JSON default NULL,
     createdBy varchar(255) NOT NULL,
     primary key(id)
 );

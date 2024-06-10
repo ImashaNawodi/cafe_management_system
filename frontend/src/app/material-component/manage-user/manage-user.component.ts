@@ -63,7 +63,7 @@ export class ManageUserComponent implements OnInit {
     this.userService.update(data).subscribe(
       (response: any) => {
         this.responseMessage = response?.message;
-        this.snackbarService.openSnackBar(this.responseMessage, "Success");
+        this.snackbarService.openSnackBar(this.responseMessage, "success");
         this.tableData(); // Refresh the table data after update
       },
       (error: any) => {

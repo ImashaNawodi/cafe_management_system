@@ -11,7 +11,7 @@ export interface Menu {
 const MENUITEMS: Menu[] = [
   {
     state: "dashboard",
-    name: "dashboard",
+    name: "Dashboard",
     icon: "dashboard",
     role: ""
   },

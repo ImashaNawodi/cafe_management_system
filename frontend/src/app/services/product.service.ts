@@ -11,7 +11,8 @@ export class ProductService {
   constructor(private httpClinet:HttpClient){}
 
   add(data :any){
-    return this.httpClinet.post(this.url+"/product/add/",data,{
+    return this.httpClinet.post(this.url+
+      "/product/add/",data,{
       headers : new HttpHeaders().set("Content-Type","application/json")
     })
   }

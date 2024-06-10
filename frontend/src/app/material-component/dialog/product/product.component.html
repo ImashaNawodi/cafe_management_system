@@ -31,12 +31,13 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" fxFlex>
-          <mat-label>Category</mat-label>
-        <mat-select formControlName="categoryId">
-          <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
-        </mat-select>
-        </mat-form-field>
+       <mat-form-field appearance="fill" fxFlex>
+  <mat-label>Category</mat-label>
+  <mat-select formControlName="categoryId">
+    <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
       
 </div>
 <mat-form-field appearance="fill" fxFlex>

@@ -138,7 +138,7 @@ export class ManageOrderComponent implements OnInit {
         this.manageOrderForm.controls['quantity'].value *
           this.manageOrderForm.controls['price'].value
       );
-    } else {
+    } else if(temp != ' '){
       this.manageOrderForm.controls['quantity'].setValue(1);
       this.manageOrderForm.controls['total'].setValue(
         this.manageOrderForm.controls['quantity'].value *
@@ -150,7 +150,7 @@ export class ManageOrderComponent implements OnInit {
     if (
       this.manageOrderForm.controls['total'].value === 0 ||
       this.manageOrderForm.controls['total'].value === null ||
-      this.manageOrderForm.controls['quntity'].value <= 0
+      this.manageOrderForm.controls['quantity'].value <= 0
     ) {
       return true;
     } else {
@@ -176,9 +176,9 @@ export class ManageOrderComponent implements OnInit {
   add() {
     var formData = this.manageOrderForm.value;
     var productName = this.dataSource.find(
-      (e: { id: number }) => e.id == formData.product.id
+      (e: { id: number; }) => e.id == formData.product.id
     );
-    if (productName == undefined) {
+    if (productName === undefined) {
       this.totalAmount = this.totalAmount + formData.total;
       this.dataSource.push({
         id: formData.product.id,
@@ -189,6 +189,12 @@ export class ManageOrderComponent implements OnInit {
         total: formData.total,
       });
       this.dataSource = [...this.dataSource];
+      this.snackbarService.openSnackBar(
+        GlobalConstant.productAdded,
+        "success"
+      );
+    }
+    else{
       this.snackbarService.openSnackBar(
         GlobalConstant.productExistError,
         GlobalConstant.error
@@ -205,11 +211,11 @@ export class ManageOrderComponent implements OnInit {
     var formData = this.manageOrderForm.value;
     var data = {
       name: formData.name,
-      email: formData.name,
-      contactNumber: formData.name,
-      paymentMethod: formData.name,
-      totalAmount: formData.name,
-      productDetails: formData.name,
+      email: formData.email,
+      contactNumber: formData.contactNumber,
+      paymentMethod: formData.paymentMethod,
+      totalAmount: this.totalAmount,
+      productDetails: JSON.stringify(this.dataSource),
     };
     this.billService.generateReport(data).subscribe(
       (response: any) => {
