@@ -38,6 +38,12 @@ const MENUITEMS: Menu[] = [
     name: "View Bill",
     icon: "import_contacts",
     role: ""
+  },
+  {
+    state: "user",
+    name: "View User",
+    icon: "people",
+    role: "admin"
   }
 ];
 
