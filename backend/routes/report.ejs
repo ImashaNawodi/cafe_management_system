@@ -1,56 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Management System</title>
     <style>
-        table {
+        body {
             font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
         }
 
-        td, th {
-            border: 1px solid #dddddd;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
             text-align: left;
-            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-style: italic;
+            color: #666;
         }
     </style>
 </head>
-
 <body>
-    <h3 style="text-align: center;">Cafe Management System</h3>
-    <table>
-        <tr>
-            <th>Name: <%= name %></th>
-            <th>Email: <%= email %></th>
-        </tr>
-        <tr>
-            <th>Contact Number: <%= contactNumber %></th>
-            <th>Payment Method: <%= paymentMethod %></th>
-        </tr>
-    </table>
+    <div class="container">
+        <div class="header">
+            <h1>Cafe Management System</h1>
+            <p>Welcome to our cafe!</p>
+        </div>
 
-    <h3>Product Details:</h3>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Sub Total</th>
-        </tr>
-        <% if (productDetails.length > 0) { %>
-            <% productDetails.forEach(function(product) { %>
-                <tr>
-                    <td><%= product.name %></td>
-                    <td><%= product.category %></td>
-                    <td><%= product.quantity %></td>
-                    <td><%= product.price %></td>
-                    <td><%= product.total%></td>
-                </tr>
-            <% }); %>
-        <% } %>
-    </table>
-    <h3>Total : <%= totalAmount %></h3>
-    <h3> Thnak you for visting. Please visit again!</h3>
+        <h2>Customer Information</h2>
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td><%= name %></td>
+                <th>Email:</th>
+                <td><%= email %></td>
+            </tr>
+            <tr>
+                <th>Contact Number:</th>
+                <td><%= contactNumber %></td>
+                <th>Payment Method:</th>
+                <td><%= paymentMethod %></td>
+            </tr>
+        </table>
+
+        <h2>Order Details</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price (Rs)</th>
+                <th>Subtotal (Rs)</th>
+            </tr>
+            <% if (productDetails.length > 0) { %>
+                <% productDetails.forEach(function(product) { %>
+                    <tr>
+                        <td><%= product.name %></td>
+                        <td><%= product.category %></td>
+                        <td><%= product.quantity %></td>
+                        <td><%= product.price %></td>
+                        <td><%= product.total %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </table>
+
+        <h2>Total Amount: Rs <%= totalAmount %></h2>
+
+        <div class="footer">
+            <p>Thank you for visiting. Please come again!</p>
+        </div>
+    </div>
 </body>
 </html>

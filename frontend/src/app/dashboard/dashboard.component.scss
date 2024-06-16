@@ -54,19 +54,32 @@ body {
     color: black;
     text-align: center !important;
   }
-  
-  .button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #e53935;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-weight: bold;
+
+
+$button-background-color: #004225;
+$button-text-color: #ffffff;
+$button-hover-background-color: lighten($button-background-color, 10%);
+$button-hover-text-color: $button-text-color;
+
+.button {
+  background-color: $button-background-color;
+  color: $button-text-color;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $button-hover-background-color;
+    color: $button-hover-text-color;
   }
+}
   
   .button:hover {
     background-color: #555;
